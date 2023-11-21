@@ -39,13 +39,23 @@ const limiter = rateLimit({
 app.use(limiter);
 
 
+// Database Connection
+const DB = process.env.DATABASE;
+mongoose
+    .connect(DB)
+    .then(() => console.log('Database Connected'))
+    .catch(err => console.log(err));
+
+// Routes
+app.use('/api/v1', router);
+
+
+
 // Frontend routing management
 app.use(express.static('client/dist'));
 app.get('*', function (req, res) {
     res.sendFile(path.resolve(__dirname, 'client', 'dist', 'index.html'));
 });
 
-// Routes
-app.use('/api/v1', router);
 
 module.exports = app
