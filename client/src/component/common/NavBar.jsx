@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 
 function NavBar() {
     return (
-        <Navbar expand="lg" className="bg-body-tertiary">
+        <Navbar expand="lg" className="bg-body-tertiary mb-4">
             <Container>
                 <Navbar.Brand>MERN CRUD</Navbar.Brand>
                 <Navbar.Toggle aria-controls="main-navbar" />

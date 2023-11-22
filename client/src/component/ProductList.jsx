@@ -9,19 +9,20 @@ const ProductList = () => {
     useEffect(() => {
         GetAllProducts().then((data) => {
             setProducts(data)
-            console.log(data)
         })
     }, [])
+
+    const add2Cart = (id) => {
+        console.log("Added to cart", id);
+    }
+
     if (products.length === 0) {
         return <p className="display-3 text-center">Loading...</p>
     }
 
-    const add2Cart = (id) => {
-        console.log(id)
-    }
     return (
         <section className="product-list">
-            <div className="container">
+            <div className="container" style={{ height: '19000px' }}>
                 <div className="row">
                     {products.map((product, index) => {
                         return (

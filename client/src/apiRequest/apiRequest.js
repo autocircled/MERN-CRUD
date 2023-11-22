@@ -29,7 +29,7 @@ export const GetAllProducts = () => {
 }
 
 export const GetProductByID = (id) => {
-    const EndPoint = 'http://localhost:5000/api/v1/product' + id;
+    const EndPoint = 'http://localhost:5000/api/v1/product/' + id;
     return axios.get(EndPoint).then((res) => {
         if (res.status === 200) {
             return res.data['data'];
