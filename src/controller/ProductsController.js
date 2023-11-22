@@ -1,13 +1,20 @@
 const ProductModel = require('../model/ProductsModel');
 
 exports.createProduct = async (req, res) => {
-    const product = new ProductModel(req.body);
-    const result = await product.save();
+    try {
+        const product = new ProductModel(req.body);
+        const result = await product.save();
 
-    res.status(200).json({
-        status: "success",
-        data: result
-    });
+        res.status(200).json({
+            status: "success",
+            data: result
+        });
+    } catch (error) {
+        res.status(400).json({
+            status: "failed",
+            data: error
+        });
+    }
 }
 exports.readProduct = async (req, res) => {
     try {
@@ -17,7 +24,10 @@ exports.readProduct = async (req, res) => {
             data: result
         });
     } catch (error) {
-        console.log(error);
+        res.status(400).json({
+            status: "failed",
+            data: error
+        });
     }
 }
 exports.readProductDetails = async (req, res) => {
