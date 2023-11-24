@@ -21,10 +21,22 @@ dotenv.config();
 
 // Security Middleware Initialization
 app.use(cors());
-app.use(helmet());
+
+// I have used this helmet middleware for security purpose
+// app.use(helmet());
+app.use(helmet({ crossOriginEmbedderPolicy: false, originAgentCluster: true }));
+app.use(
+    helmet.contentSecurityPolicy({
+        useDefaults: true,
+        directives: {
+            "img-src": ["'self'", "https: data: blob:"],
+        },
+    })
+);
+
+
 app.use(hpp());
 app.use(mongoSanitize());
-
 
 // Body Parser
 app.use(bodyParser.json());

@@ -42,9 +42,9 @@ export const GetProductByID = (id) => {
     });
 }
 
-export const DeleteProduct = (id) => {
+export const DeleteProduct = async (id) => {
     const EndPoint = 'http://localhost:5000/api/v1/delete-product/' + id;
-    return axios.get(EndPoint).then((res) => {
+    return await axios.post(EndPoint).then((res) => {
         if (res.status === 200) {
             return true;
         } else {
